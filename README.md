@@ -49,7 +49,7 @@ lib/
 ### Setup Instructions
 
 ```bash
-git clone https://github.com/opxdelwin/nourish-app.git
+git clone https://github.com/CoderIshanGupta/Trackify.git
 cd nourish-app
 flutter pub get
 flutter run
