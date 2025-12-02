@@ -50,7 +50,7 @@ lib/
 
 ```bash
 git clone https://github.com/CoderIshanGupta/Trackify.git
-cd nourish-app
+cd Trackify
 flutter pub get
 flutter run
 ````
