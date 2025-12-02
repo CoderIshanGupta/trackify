@@ -49,8 +49,8 @@ lib/
 ### Setup Instructions
 
 ```bash
-git clone https://github.com/CoderIshanGupta/Trackify.git
-cd Trackify
+git clone https://github.com/CoderIshanGupta/trackify.git
+cd trackify
 flutter pub get
 flutter run
 ````
