@@ -1,0 +1,47 @@
+name: trackify
+description: A lifestyle tracking app – expenses, workouts, mood & activity suggestions.
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.0.0 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  # Firebase & Auth
+  firebase_core: ^2.32.0
+  firebase_auth: ^4.20.0
+  google_sign_in: ^6.2.2
+
+  # Networking
+  dio: ^5.6.0
+  flutter_secure_storage: ^9.2.2
+
+  # Navigation
+  go_router: ^14.6.1
+
+  # State Management
+  flutter_riverpod: ^2.5.1
+
+  # UI
+  google_fonts: ^6.2.1
+  fl_chart: ^0.68.0
+  intl: ^0.19.0
+  lottie: ^3.1.2
+  shimmer: ^3.0.0
+
+  # Utils
+  shared_preferences: ^2.3.1
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^4.0.0
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/images/
+    - assets/animations/

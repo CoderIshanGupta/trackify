@@ -1,0 +1,11 @@
+# Firebase service account (SECRET — never commit!)
+server/firebase-service-account.json
+
+# Node
+node_modules/
+.env
+.env.*
+
+# OS
+.DS_Store
+Thumbs.db
