@@ -2,9 +2,32 @@ import 'package:flutter/foundation.dart';
 
 import '../models/expense_model.dart';
 
-/// Provider for managing expenses (CRUD, loading, etc.).
+/// Provider for managing expenses.
 class ExpenseProvider extends ChangeNotifier {
-  final List<ExpenseModel> _expenses = [];
+  final List<ExpenseModel> _expenses = [
+    ExpenseModel(
+      id: 'e1',
+      amount: 4.50,
+      category: 'Food',
+      note: 'Morning hazelnut latte ☕',
+      timestamp: DateTime.now().subtract(const Duration(hours: 4)),
+    ),
+    ExpenseModel(
+      id: 'e2',
+      amount: 65.20,
+      category: 'Shopping',
+      note: 'Weekly organic groceries 🥦',
+      timestamp: DateTime.now().subtract(const Duration(days: 1, hours: 2)),
+    ),
+    ExpenseModel(
+      id: 'e3',
+      amount: 15.00,
+      category: 'Entertainment',
+      note: 'Sci-fi movie ticket 🍿',
+      timestamp: DateTime.now().subtract(const Duration(days: 2, hours: 5)),
+    ),
+  ];
+
   bool _isLoading = false;
   Object? _error;
 
@@ -18,10 +41,7 @@ class ExpenseProvider extends ChangeNotifier {
     notifyListeners();
 
     try {
-      // TODO: fetch expenses from Firebase/local storage.
-      // _expenses
-      //   ..clear()
-      //   ..addAll(fetchedExpenses);
+      await Future.delayed(const Duration(milliseconds: 200));
     } catch (e) {
       _error = e;
     } finally {
@@ -31,19 +51,18 @@ class ExpenseProvider extends ChangeNotifier {
   }
 
   Future<void> addExpense(ExpenseModel expense) async {
-    // TODO: save to backend first (Firestore/Realtime DB) if needed.
-    _expenses.add(expense);
-    notifyListeners();
-  }
-
-  Future<void> updateExpense(ExpenseModel updated) async {
-    // TODO: implement update logic and persistence.
+    // Add new entries to the top
+    _expenses.insert(0, expense);
     notifyListeners();
   }
 
   Future<void> deleteExpense(ExpenseModel expense) async {
-    // TODO: delete from backend if required.
-    _expenses.remove(expense);
+    _expenses.removeWhere((item) => item.id == expense.id);
     notifyListeners();
+  }
+
+  /// Calculates exact total amount spent
+  double get totalSpent {
+    return _expenses.fold<double>(0.0, (sum, item) => sum + item.amount);
   }
 }
